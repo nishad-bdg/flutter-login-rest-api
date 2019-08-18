@@ -10,8 +10,13 @@ class ApiProvider {
     final loginUrl = '${AppConfig.api_url}/api-token-auth/';
     final body = {"username": username, "password": password};
     final response = await http.post(loginUrl, body: body);
-    final parse = json.decode(response.body);
-    final String token = Token.fromJson(parse).token;
-    return token;
+    if (response.statusCode == 200) {
+      final parse = json.decode(response.body);
+      final String token = Token.fromJson(parse).token;
+      return token;
+    }
+    else{
+      throw Exception("Invalid username or password");
+    }
   }
 }
