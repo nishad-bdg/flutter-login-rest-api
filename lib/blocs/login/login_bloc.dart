@@ -9,6 +9,7 @@ import 'package:meta/meta.dart';
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final Repository repository;
   final AuthenticationBloc authenticationBloc;
+
   LoginBloc({@required this.repository, @required this.authenticationBloc})
       : assert(repository != null),
         assert(repository != null);
